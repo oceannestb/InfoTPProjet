@@ -1,0 +1,26 @@
+public abstract class Hebergement {
+    // Attributs avec différents modificateurs d'accès
+    protected String id;
+    private String adresse;
+    protected double prixNuit;
+
+    // Constructeur avec paramètres (utilisé par super dans les classes filles)
+    public Hebergement(String id, String adresse, double prixNuit) {
+        this.id = id;
+        this.adresse = adresse;
+        this.prixNuit = prixNuit;
+    }
+
+    // Getter pour l'attribut private adresse
+    public String getAdresse() {
+        return adresse;
+    }
+
+    // Méthode abstraite : obligatoirement redéfinie dans les classes filles
+    public abstract double calculerPrixFinal(int nbNuits);
+
+    // Méthode pour afficher les attributs
+    public void afficher() {
+        System.out.print("ID: " + id + " | Adresse: " + adresse + " | Prix/Nuit: " + prixNuit + "€");
+    }
+}
