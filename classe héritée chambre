@@ -1,0 +1,43 @@
+public class Chambre extends Hebergement {
+    // Au moins 2 attributs private
+    private int etage;
+    private String typeLit;
+
+    // 1) Constructeur par défaut (sans paramètre)
+    public Chambre() {
+        super("SANS_ID", "Inconnue", 0.0); // Appel au constructeur parent
+        this.etage = 0;
+        this.typeLit = "Simple";
+    }
+
+    // 2) Constructeur avec les paramètres associés
+    public Chambre(String id, String adresse, double prixNuit, int etage, String typeLit) {
+        super(id, adresse, prixNuit);
+        this.etage = etage;
+        this.typeLit = typeLit;
+    }
+
+    // 3) Constructeur par copie
+    public Chambre(Chambre autre) {
+        // On récupère les valeurs de l'objet 'autre' via l'héritage et l'accès direct
+        super(autre.id, autre.getAdresse(), autre.prixNuit);
+        this.etage = autre.etage;
+        this.typeLit = autre.typeLit;
+    }
+
+    // Getters pour les attributs private
+    public int getEtage() { return etage; }
+    public String getTypeLit() { return typeLit; }
+
+    @Override
+    public void afficher() {
+        super.afficher(); // Affiche les infos de Hebergement
+        System.out.println(" | Etage: " + etage + " | Type de lit: " + typeLit);
+    }
+
+    @Override
+    public double calculerPrixFinal(int nbNuits) {
+        // Exemple : prix de base * nuits + une taxe fixe de 2€
+        return (this.prixNuit * nbNuits) + 2.0;
+    }
+}
